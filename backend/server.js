@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -18,8 +19,16 @@ app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
 
+if (process.env.NODE_ENV === 'production') {
+    const __dirname = path.resolve();
+    app.use(express.static(path.join(__dirname, 'frontend/disc')));
 
-app.get('/', (req, res) => res.send('Server is running'))
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist','index.html')))
+} else {
+    app.get('/', (req, res) => res.send('Server is running'))
+}
+
+
 
 app.use(notFound);
 app.use(errorHandler);
