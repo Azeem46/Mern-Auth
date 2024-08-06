@@ -2,8 +2,9 @@ import Task from '../models/taskModel.js';
 
 // Get all tasks
 export const getTasks = async (req, res) => {
+  const userId = req.user._id; // Assuming req.user contains the authenticated user's information
   try {
-    const tasks = await Task.find();
+    const tasks = await Task.find({ user: userId });
     res.json(tasks);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -13,7 +14,8 @@ export const getTasks = async (req, res) => {
 // Add a new task
 export const addTask = async (req, res) => {
   const { title, description } = req.body;
-  const task = new Task({ title, description });
+  const userId = req.user._id; // Assuming req.user contains the authenticated user's information
+  const task = new Task({ title, description, user: userId });
   try {
     const savedTask = await task.save();
     res.status(201).json(savedTask);
@@ -23,15 +25,21 @@ export const addTask = async (req, res) => {
 };
 
 // Update a task
+// Update a task
 export const updateTask = async (req, res) => {
   const { id } = req.params;
   const { title, description, isCompleted } = req.body;
+  const userId = req.user._id; // Assuming req.user contains the authenticated user's information
   try {
-    const updatedTask = await Task.findByIdAndUpdate(
-      id,
-      { title, description, isCompleted, updatedAt: new Date() },
-      { new: true }
-    );
+    const task = await Task.findOne({ _id: id, user: userId });
+    if (!task) return res.status(404).json({ message: 'Task not found' });
+
+    task.title = title || task.title;
+    task.description = description || task.description;
+    task.isCompleted = isCompleted !== undefined ? isCompleted : task.isCompleted;
+    task.updatedAt = new Date();
+
+    const updatedTask = await task.save();
     res.json(updatedTask);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -41,10 +49,14 @@ export const updateTask = async (req, res) => {
 // Delete a task
 export const deleteTask = async (req, res) => {
   const { id } = req.params;
+  const userId = req.user._id; // Assuming req.user contains the authenticated user's information
   try {
-    await Task.findByIdAndDelete(id);
+    const task = await Task.findOneAndDelete({ _id: id, user: userId });
+    if (!task) return res.status(404).json({ message: 'Task not found' });
+
     res.json({ message: 'Task deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
