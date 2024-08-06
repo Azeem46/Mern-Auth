@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
+import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -36,7 +37,15 @@ const Header = () => {
             <Nav className='ms-auto'>
               {userInfo ? (
                 <>
-                  <NavDropdown title={userInfo.name} id='username'>
+                  <NavDropdown 
+                  title={
+                    <span>
+                      <CgProfile style={{ marginRight: '5px' }} />
+                      {userInfo.name}
+                    </span>
+                  } 
+                  id='username'
+                >
                     <LinkContainer to='/profile'>
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
