@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../slices/themeSlice';
 import { FaSun, FaMoon } from 'react-icons/fa';
-import './ThemeToggle.css'; // Import the CSS file
+import '../../public/css/ThemeToggle.css'; // Import the CSS file
 
 const ThemeToggle = () => {
   const dispatch = useDispatch();

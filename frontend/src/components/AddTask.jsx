@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../slices/taskSlice';
 import axios from 'axios';
-import './AddTaks.css'; // Import the CSS file
+import '../../public/css/AddTaks.css'; // Import the CSS file
 
 const AddTask = () => {
     const [isVisible, setIsVisible] = useState(false);
