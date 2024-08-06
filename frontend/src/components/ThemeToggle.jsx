@@ -1,6 +1,6 @@
-
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../slices/themeSlice';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import './ThemeToggle.css'; // Import the CSS file
 
 const ThemeToggle = () => {
@@ -8,14 +8,20 @@ const ThemeToggle = () => {
   const isDarkMode = useSelector((state) => state.theme.isDarkMode);
 
   return (
-    <label className="switch">
+    <div className="theme-toggle">
       <input
+        className="theme-toggle-input"
         type="checkbox"
         checked={isDarkMode}
         onChange={() => dispatch(toggleTheme())}
+        id="theme-toggle"
       />
-      <span className="slider round"></span>
-    </label>
+      <label className="theme-toggle-label" htmlFor="theme-toggle">
+        <FaSun className="sun-icon" />
+        <FaMoon className="moon-icon" />
+        <span className="slider round"></span>
+      </label>
+    </div>
   );
 };
 

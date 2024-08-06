@@ -5,9 +5,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
+import ThemeToggle from './ThemeToggle';
+import { useEffect } from 'react';
 import { CgProfile } from "react-icons/cg";
+import '../index.css';
+
 
 const Header = () => {
+
+  const isDarkMode = useSelector((state) => state.theme.isDarkMode);
+
+  useEffect(() => {
+    document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+  }, [isDarkMode]);
+
   const { userInfo } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -37,6 +48,7 @@ const Header = () => {
             <Nav className='ms-auto'>
               {userInfo ? (
                 <>
+                <ThemeToggle />
                   <NavDropdown 
                   title={
                     <span>
