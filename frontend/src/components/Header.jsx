@@ -40,7 +40,7 @@ const Header = () => {
                   <NavDropdown 
                   title={
                     <span>
-                      <CgProfile style={{ marginRight: '5px' }} />
+                      <CgProfile style={{ marginRight: '5px', marginBottom: '2px' }} />
                       {userInfo.name}
                     </span>
                   } 
