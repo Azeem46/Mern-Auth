@@ -18,6 +18,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
+const corsOptions = {
+  origin: 'https://mern-auth-1-5zyo.onrender.com', // Your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+
 app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes); // Use task routes
 
