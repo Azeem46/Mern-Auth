@@ -20,7 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: 'https://mern-auth-1-5zyo.onrender.com', // Your frontend URL
+  origin: 'https://mern-auth-1-5zyo.onrender.com',
+  orign: 'https://mern-auth-0eyb.onrender.com',
+   // Your frontend URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
