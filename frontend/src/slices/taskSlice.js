@@ -9,7 +9,7 @@ const initialState = {
 };
 
 // Async thunk to fetch tasks for a user
-export const fetchTasks = createAsyncThunk('https://mern-auth-0eyb.onrender.com/tasks/fetchTasks', async (_, { getState }) => {
+export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async (_, { getState }) => {
     const { userInfo } = getState().auth;
     if (!userInfo) throw new Error('User not logged in');
 
