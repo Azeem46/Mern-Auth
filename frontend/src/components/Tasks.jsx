@@ -1,9 +1,9 @@
-// components/Tasks.js
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTasks, deleteTask } from '../slices/taskSlice'; // Corrected import path
+import { fetchTasks, deleteTask } from '../slices/taskSlice';
 import { useEffect, useState } from 'react';
-import UpdateTaskModal from './UpdateTaskModal'; // Ensure correct path
-import '../../public/css/tasks.css';// Import the CSS file
+import UpdateTaskModal from './UpdateTaskModal';
+import '../../public/css/tasks.css'; // Import the CSS file
+import { FaEdit, FaTrashAlt } from 'react-icons/fa'; // Import icons
 
 const Tasks = () => {
     const dispatch = useDispatch();
@@ -46,13 +46,13 @@ const Tasks = () => {
                                 className="update-button"
                                 onClick={() => handleUpdateClick(task)}
                             >
-                                Update
+                                <FaEdit />
                             </button>
                             <button
                                 className="delete-button"
                                 onClick={() => handleDelete(task._id)}
                             >
-                                Delete
+                                <FaTrashAlt />
                             </button>
                         </div>
                     </li>

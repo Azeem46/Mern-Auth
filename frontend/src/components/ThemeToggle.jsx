@@ -2,10 +2,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../slices/themeSlice';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import '../../public/css/ThemeToggle.css'; // Import the CSS file
+import { useEffect } from 'react';
 
 const ThemeToggle = () => {
   const dispatch = useDispatch();
   const isDarkMode = useSelector((state) => state.theme.isDarkMode);
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
 
   return (
     <div className="theme-toggle">
