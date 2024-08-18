@@ -24,7 +24,7 @@ const corsOptions = {
   origin: [
     'http://localhost:3000', // Development URL
     'https://mern-auth-1-5zyo.onrender.com', // Production URL
-    'https://mern-auth-0eyb.onrender.com/'
+    'https://mern-auth-0eyb.onrender.com'
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
