@@ -8,7 +8,7 @@ import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
-import likeRoutes from './routes/likeRoutes.js';
+
 
 connectDB();
 
