@@ -1,13 +1,47 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="This is a Vite + React application. Discover fast performance and modern features." />
+  <meta name="keywords" content="Vite, React, JavaScript, SEO, Fast, Modern" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Vite + React" />
+  <meta property="og:description" content="Experience fast performance with Vite and React." />
+  <meta property="og:image" content="/images/og-image.png" />
+  <meta property="og:url" content="https://yourwebsite.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vite + React" />
+  <meta name="twitter:description" content="Experience fast performance with Vite and React." />
+  <meta name="twitter:image" content="/images/twitter-image.png" />
+
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+  <!-- Title -->
+  <title>Fast and Modern Vite + React Application</title>
+
+  <!-- Preload Critical CSS -->
+  <link rel="preload" href="/src/styles.css" as="style" />
+  <link rel="stylesheet" href="/src/styles.css" />
+
+  <!-- Preload Main JavaScript -->
+  <link rel="preload" href="/src/main.jsx" as="script" />
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <!-- Load JavaScript -->
+  <script type="module" src="/src/main.jsx" defer></script>
+</body>
+
 </html>

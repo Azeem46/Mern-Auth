@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000;
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoutes.js'
 import taskRoutes from './routes/taskRoutes.js';
+import likeRoutes from './routes/likeRoutes.js';
 
 connectDB();
 
@@ -32,6 +33,7 @@ app.use(cors(corsOptions));
 
 app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes); // Use task routes
+app.use('/api', likeRoutes);
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
