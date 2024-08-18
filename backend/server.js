@@ -21,7 +21,11 @@ app.use(cookieParser());
 
 // CORS configuration
 const corsOptions = {
-  origin: 'https://mern-auth-1-5zyo.onrender.com', // Your frontend URL
+  origin: [
+    'http://localhost:3000', // Development URL
+    'https://mern-auth-1-5zyo.onrender.com', // Production URL
+    'https://mern-auth-0eyb.onrender.com/'
+  ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
