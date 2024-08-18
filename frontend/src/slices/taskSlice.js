@@ -13,7 +13,7 @@ export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async (_, { getSt
     const { userInfo } = getState().auth;
     if (!userInfo) throw new Error('User not logged in');
 
-    const response = await axios.get(`/api/tasks?user=${userInfo._id}`);
+    const response = await axios.get(`/api/tasks`);
     return response.data;
 });
 
