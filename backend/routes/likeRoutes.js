@@ -1,6 +1,6 @@
 import express from 'express';
 import { likeTask, unlikeTask } from '../controllers/likeController.js';
-import { protect } from '../middleware/authMiddleware.js'; // Assuming you have an auth middleware
+import { protect } from '../middleware/authmiddleware.js';
 
 const router = express.Router();
 
