@@ -5,6 +5,7 @@ export const getTasks = async (req, res) => {
   const userId = req.user._id; // Assuming req.user contains the authenticated user's information
   try {
     const tasks = await Task.find({ user: userId });
+    console.log(tasks);
     res.json(tasks);
   } catch (error) {
     res.status(500).json({ message: error.message });
