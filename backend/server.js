@@ -31,7 +31,7 @@ app.use(cors(corsOptions));
 // API routes
 app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes);
-app.use('/api', likeRoutes);
+
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
