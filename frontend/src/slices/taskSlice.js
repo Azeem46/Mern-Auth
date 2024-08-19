@@ -13,17 +13,17 @@ export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async (_, { getSt
     const { userInfo } = getState().auth;
     if (!userInfo) throw new Error('User not logged in');
 
-    const response = await axios.get('/tasks', _);
+    const response = await axios.get(`/api/tasks?user=${userInfo._id}`);
     return response.data;
 });
 
 export const addNewTask = createAsyncThunk('tasks/addNewTask', async (newTask, { getState }) => {
-    const response = await axios.post('/tasks', newTask);
+    const response = await axios.post('/api/tasks', newTask);
     return response.data;
 });
 
 export const updateTask = createAsyncThunk('tasks/updateTask', async ({ id, updates }) => {
-    const response = await axios.patch(`/tasks/${id}`, updates);
+    const response = await axios.patch(`/api/tasks/${id}`, updates);
     return response.data;
 });
 
@@ -53,9 +53,9 @@ const tasksSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchTasks.fulfilled, (state, action) => {
-    state.status = 'succeeded';
-    state.tasks = Array.isArray(action.payload) ? action.payload : []; // Ensure tasks is always an array
-})
+                state.status = 'succeeded';
+                state.tasks = action.payload;
+            })
             .addCase(fetchTasks.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
