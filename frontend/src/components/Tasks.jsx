@@ -7,7 +7,7 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa'; // Import icons
 
 const Tasks = () => {
     const dispatch = useDispatch();
-    const { tasks, status, error } = useSelector((state) => state.tasks);
+    const { tasks = [], status, error } = useSelector((state) => state.tasks);
     const [selectedTask, setSelectedTask] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -31,6 +31,7 @@ const Tasks = () => {
 
     if (status === 'loading') return <p>Loading tasks...</p>;
     if (status === 'failed') return <p>Error: {error}</p>;
+    if (!Array.isArray(tasks)) return <p>Tasks data is not available.</p>; // Fallback check
 
     return (
         <div className="tasks-container">
