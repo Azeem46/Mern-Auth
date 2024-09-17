@@ -23,7 +23,7 @@ app.use(cookieParser());
 const corsOptions = {
   origin: [
     'http://localhost:3000', // Development URL
-    'https://mern-auth-1-5zyo.onrender.com', // Production URL
+    'https://mern-auth-1-vpwl.onrender.com', // Production URL
     'https://mern-auth-0eyb.onrender.com',
     'https://mern-auth-hgxd.vercel.app',
   ],
